@@ -82,7 +82,6 @@
 		E04DDD94265B48E60005F8D5 /* SwiftChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05828DD26574D770045510E /* SwiftChatViewController.swift */; };
 		E04DDDC7265CC2080005F8D5 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E04DDDC4265CC2080005F8D5 /* libmp3lame.a */; };
 		E04DDDC8265CC2080005F8D5 /* AudioWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E04DDDC6265CC2080005F8D5 /* AudioWrapper.m */; };
-		E052F0242657B4020031B39F /* guideMovie1.mov in Resources */ = {isa = PBXBuildFile; fileRef = E052F0232657B4010031B39F /* guideMovie1.mov */; };
 		E05827F626574BF10045510E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05827F526574BF10045510E /* AppDelegate.swift */; };
 		E05827FA26574BF10045510E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05827F926574BF10045510E /* ViewController.swift */; };
 		E05827FD26574BF10045510E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05827FB26574BF10045510E /* Main.storyboard */; };
@@ -330,7 +329,6 @@
 		E04DDDC4265CC2080005F8D5 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
 		E04DDDC5265CC2080005F8D5 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		E04DDDC6265CC2080005F8D5 /* AudioWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioWrapper.m; sourceTree = "<group>"; };
-		E052F0232657B4010031B39F /* guideMovie1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = guideMovie1.mov; sourceTree = "<group>"; };
 		E05827F226574BF10045510E /* ChatUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05827F526574BF10045510E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05827F926574BF10045510E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -747,7 +745,6 @@
 				FC2A8ABA2684613600F380DA /* SwpRequestTool */,
 				FC7565392681D6360027EDA7 /* NetWorkManager */,
 				E05828EB26574EC50045510E /* SwiftChatUI-Bridging-Header.h */,
-				E052F0232657B4010031B39F /* guideMovie1.mov */,
 				E05828F82657529B0045510E /* Config.swift */,
 				E05827FB26574BF10045510E /* Main.storyboard */,
 				E05827FE26574BF30045510E /* Assets.xcassets */,
@@ -1213,7 +1210,6 @@
 				E05828AE26574D060045510E /* SHShortVideo.bundle in Resources */,
 				E05827FF26574BF30045510E /* Assets.xcassets in Resources */,
 				E05828BA26574D070045510E /* SHChatUI.bundle in Resources */,
-				E052F0242657B4020031B39F /* guideMovie1.mov in Resources */,
 				E05827FD26574BF10045510E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

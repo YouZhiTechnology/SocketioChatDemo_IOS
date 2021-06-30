@@ -10,6 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "ChatMessageLocationViewController.h"
 #import "ChatShortVideoViewController.h"
+#import "TZImagePickerController.h"
+#import "TZImageManager.h"
 
 @interface ChatMessageInputView () <
 UITextViewDelegate,
@@ -430,31 +432,23 @@ static CGFloat start_maxY;
 #pragma mark 打开照片
 - (void)openPhoto
 {
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
-    {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.view.backgroundColor = [UIColor whiteColor];
-        picker.delegate = self;
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//        picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-//        picker.mediaTypes = [NSArray arrayWithObjects:@"public.image", @"public.movie",nil];
-        picker.mediaTypes = [NSArray arrayWithObjects:@"public.image",nil];
-        [self.supVC presentViewController:picker animated:YES completion:nil];
-    }
     
-//    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
-//    imagePickerVc.allowPickingImage = YES;
-//
-//    // You can get the photos by block, the same as by delegate.
-//    // 你可以通过block或者代理，来得到用户选择的照片.
-//    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-//        //发送图片与照片
-//        [self sendMessageWithImage:photos.firstObject];
-//    }];
-//
-//    [imagePickerVc setModalPresentationStyle:UIModalPresentationFullScreen];
-//    [self.supVC presentViewController:imagePickerVc animated:YES completion:nil];
+    TZImagePickerController * imagePickerVc = [[TZImagePickerController alloc]initWithMaxImagesCount:1  delegate:self];
+    
+    imagePickerVc.showSelectBtn = false;
+    imagePickerVc.allowTakeVideo = false;
+    imagePickerVc.allowPickingImage = true;
+
+    imagePickerVc.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self.supVC.navigationController presentViewController:imagePickerVc animated:true completion:nil];
+    
 }
+
+- (void)imagePickerController:(TZImagePickerController *)picker didSelectAsset:(PHAsset *)asset photo:(UIImage *)photo isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
+    //发送图片与照片
+    [self sendMessageWithImage:photo];
+}
+
 
 #pragma mark 打开相机
 - (void)openCarema
@@ -539,47 +533,6 @@ static CGFloat start_maxY;
     } failure:^(NSString *errorMessage, NSError *error) {
         NSLog(@"视频导出失败:%@,error:%@",errorMessage, error);
     }];
-}
-
-#pragma mark - UIImagePickerControllerDelegate
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(nonnull NSDictionary< NSString *, id > *)info
-{
-    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
-    
-    if ([mediaType isEqualToString:@"public.movie"])
-    { //如果是视频
-        
-        //视频路径
-        NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];
-        
-        //发送视频
-        [self sendMessageWithVideo:url.path];
-        
-        //发送视频
-        [self.supVC dismissViewControllerAnimated:YES completion:nil];
-    }
-    else if ([mediaType isEqualToString:@"public.image"])
-    {
-        UIImage *image = nil;
-        //如果允许编辑则获得编辑后的照片，否则获取原始照片
-        if (picker.allowsEditing)
-        {
-            image = [info objectForKey:UIImagePickerControllerEditedImage]; //获取编辑后的照片
-        }
-        else
-        {
-            image = [info objectForKey:UIImagePickerControllerOriginalImage]; //获取原始照片
-        }
-        //发送图片与照片
-        [self sendMessageWithImage:image];
-        
-        [self.supVC dismissViewControllerAnimated:YES completion:nil];
-    }
-}
-
-#pragma mark -- UIImagePickerControllerDelegate --
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self.supVC dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UITextViewDelegate

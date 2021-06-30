@@ -30,6 +30,7 @@
 #import "AudioWrapper.h"
 #import "SwpRequest.h"
 #import "LameTool.h"
-
+#import "TZImagePickerController.h"
+#import "TZImageManager.h"
 
 #endif /* BridgeHeader_h */
