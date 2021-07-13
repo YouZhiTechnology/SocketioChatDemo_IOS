@@ -57,7 +57,7 @@
 #define kShareMenuPerColum 2
 //下方菜单选项宽高
 #define kShareMenuItemWH 60
-//下方菜单选项整体的高度(KXHShareMenuItemHeight - kXHShareMenuItemWH 为标题的高)
+//下方菜单选项整体的高度(KShareMenuItemHeight - kShareMenuItemWH 为标题的高)
 #define KShareMenuItemHeight 80
 //下方菜单控件上下间隔
 #define KShareMenuItemTop 15
@@ -72,7 +72,7 @@
 #define kChatMessageInput_H 205
 
 //录音最大时长与最小
-#define kMaxRecordTime 60
+#define kMaxRecordTime 15
 #define kMinRecordTime 1
 
 #define kIsFull (kTopSafe > 20)
@@ -80,20 +80,18 @@
 #define kBottomSafe (kIsFull?39:0)
 #define kTopSafe ([[UIApplication sharedApplication] statusBarFrame].size.height)
 
-/**宏定义  __weak typeof(self)*/
-#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
-
 #define kWeak(VAR) \
 try {} @finally {} \
 __weak __typeof__(VAR) VAR##_myWeak_ = (VAR)
 
-#define kSHStrong(VAR) \
+#define kChatStrong(VAR) \
 try {} @finally {} \
 __strong __typeof__(VAR) VAR = VAR##_myWeak_;\
 if(VAR == nil) return
 
 #pragma mark - 文件
-
+//聊天界面
+#import "ChatMessageViewController.h"
 //聊天界面帮助类
 #import "ChatMessageHelper.h"
 //语音提示框
@@ -133,7 +131,5 @@ if(VAR == nil) return
 #import "UIView+ChatExtension.h"
 #import "UIImage+ChatExtension.h"
 #import "ChatTool.h"
-
-#import "AudioWrapper.h"
 
 #import <TZImagePickerController.h>

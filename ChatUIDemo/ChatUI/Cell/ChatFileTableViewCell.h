@@ -1,6 +1,6 @@
 //
 //  ChatFileTableViewCell.h
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2020/11/3.
 //  Copyright © 2020 GXL. All rights reserved.

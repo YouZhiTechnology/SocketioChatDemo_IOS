@@ -1,6 +1,6 @@
 //
 //  ChatShortVideoViewController.h
-//  SHShortVideoExmaple
+//  ChatShortVideoExmaple
 //
 //  Created by GXL on 2018/8/29.
 //  Copyright © 2018年 GXL. All rights reserved.

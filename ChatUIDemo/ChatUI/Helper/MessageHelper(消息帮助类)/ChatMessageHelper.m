@@ -1,6 +1,6 @@
 //
 //  ChatMessageHelper.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2018/6/5.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -90,12 +90,12 @@
     message.messageId = [self getTimeWithZone];
     message.isRead = YES;
     message.messageRead = YES;
-    message.messageState = SHSendMessageType_Sending;
+    message.messageState = ChatSendMessageType_Sending;
     message.sendTime = [self getTimeWithZone];
     message.bubbleMessageType = arc4random()%2;
     
-    if (message.bubbleMessageType == SHBubbleMessageType_Receiving) {
-        message.messageState = SHSendMessageType_Successed;
+    if (message.bubbleMessageType == ChatBubbleMessageType_Receiving) {
+        message.messageState = ChatSendMessageType_Successed;
         message.isRead = NO;
         message.messageRead = NO;
     }
@@ -114,7 +114,7 @@
         return YES;
     }
     //大于5分钟进行显示
-    if ([[self getCurrentDateWithZone:time] timeIntervalSinceDate:[self getCurrentDateWithZone:setTime]] > 5*D_MINUTE) {
+    if ([[self getCurrentDateWithZone:time] timeIntervalSinceDate:[self getCurrentDateWithZone:setTime]] > 1*D_MINUTE) {
         return YES;
     }else{
         return NO;

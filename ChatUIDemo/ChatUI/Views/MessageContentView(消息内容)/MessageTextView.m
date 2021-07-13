@@ -47,6 +47,7 @@
     [super setTextContainerInset:UIEdgeInsetsMake(textContainerInset.top, textContainerInset.left - padding, textContainerInset.bottom, textContainerInset.right - padding)];
 }
 
+#pragma mark 关闭UITextView自带长按弹框
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
     return NO;
 }

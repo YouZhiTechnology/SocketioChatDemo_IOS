@@ -22,10 +22,10 @@
 
 @interface ChatEmotionKeyboard : UIView
 
-//下方按钮集合(SHEmoticonType)
+//下方按钮集合(ChatEmoticonType)
 @property (nonatomic, strong) NSArray *toolBarArr;
 //位置(默认是第一个，使用前设置在reloadView之后)
-@property (nonatomic, assign) SHEmoticonType index;
+@property (nonatomic, assign) ChatEmoticonType index;
 //点击回调
 @property (nonatomic, copy) void (^clickEmotionBlock)(ChatEmotionModel *model);
 //发送回调
@@ -34,5 +34,7 @@
 @property (nonatomic, copy) void (^deleteEmotionBlock)(void);
 
 - (void)reloadView;
+
+- (void)clear;
 
 @end

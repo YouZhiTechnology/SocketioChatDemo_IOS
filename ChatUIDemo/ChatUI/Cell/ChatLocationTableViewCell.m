@@ -1,6 +1,6 @@
 //
 //  ChatLocationTableViewCell.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2021/5/20.
 //  Copyright © 2018 GXL. All rights reserved.
@@ -58,7 +58,7 @@
     [self setBubbleImage:image];
     
     //设置frame
-    CGFloat margin = (message.bubbleMessageType == SHBubbleMessageType_Send) ? 0 : kChat_angle_w;
+    CGFloat margin = (message.bubbleMessageType == ChatBubbleMessageType_Send) ? 0 : kChat_angle_w;
     
     self.locName.frame = CGRectMake(margin + kChat_margin, 0, self.btnContent.width - kChat_angle_w - 2*kChat_margin, 30);
     self.locView.frame = CGRectMake(margin, self.locName.maxY, self.btnContent.width - kChat_angle_w, self.btnContent.height - self.locName.height);

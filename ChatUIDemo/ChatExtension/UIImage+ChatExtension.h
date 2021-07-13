@@ -1,6 +1,6 @@
 //
-//  UIImage+SHExtension.h
-//  SHExtension
+//  UIImage+ChatExtension.h
+//  ChatExtension
 //
 //  Created by GXL on 2018/9/19.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^ColorBlock)(NSString *colorString);
 
-@interface UIImage (SHExtension)
+@interface UIImage (ChatExtension)
 
 //获取指定大小的图片(图片等比例居中)
 - (UIImage *)imageWithSize:(CGSize)size;
@@ -26,11 +26,6 @@ typedef void(^ColorBlock)(NSString *colorString);
 //获取图片颜色
 - (void)getImageColorWithBlock:(ColorBlock)block;
 
-////保存图片到手机
-//+ (void)saveImageWithImage:(UIImage *)image block:(void(^) (NSURL *url))block;
-//保存视图到手机
-//+ (void)saveImageWithView:(UIView *)view block:(void(^) (NSURL *url))block;
-
 //通过layer获取一张图片
 + (UIImage *)getImageWithLayer:(CALayer *)layer;
 //通过视图获取一张图片
@@ -41,13 +36,6 @@ typedef void(^ColorBlock)(NSString *colorString);
 + (UIImage *)getImageWithSize:(CGSize)size colorArr:(NSArray *)colorArr;
 
 @end
-
-
-
-
-
-
-
 
 
 #pragma mark - 获取图片颜色类

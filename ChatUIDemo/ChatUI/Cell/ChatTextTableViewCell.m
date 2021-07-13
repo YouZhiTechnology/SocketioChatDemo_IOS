@@ -1,6 +1,6 @@
 //
 //  ChatTextTableViewCell.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2021/5/20.
 //  Copyright © 2018 GXL. All rights reserved.
@@ -28,6 +28,7 @@
     // Configure the view for the selected state
 }
 
+
 - (void)setMessageFrame:(ChatMessageFrame *)messageFrame{
     [super setMessageFrame:messageFrame];
     
@@ -44,7 +45,7 @@
         view_y = (kChat_min_h - kChatFont_content.lineHeight)/2;
     }
     
-    CGFloat margin = (message.bubbleMessageType == SHBubbleMessageType_Send) ? 0 : kChat_angle_w;
+    CGFloat margin = (message.bubbleMessageType == ChatBubbleMessageType_Send) ? 0 : kChat_angle_w;
     self.textView.frame = CGRectMake(margin + kChat_margin, view_y, self.btnContent.width - 2*kChat_margin - kChat_angle_w, self.btnContent.height - 2*view_y);
 }
 

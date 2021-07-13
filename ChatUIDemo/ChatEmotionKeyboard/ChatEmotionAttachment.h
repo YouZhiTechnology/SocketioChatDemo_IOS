@@ -1,5 +1,5 @@
 //
-//  SHEmotionAttachment.h
+//  ChatEmotionAttachment.h
 //  ChatEmotionKeyboardExmaple
 //
 //  Created by GXL on 2018/8/16.

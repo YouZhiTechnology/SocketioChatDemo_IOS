@@ -1,6 +1,6 @@
 //
-//  UIView+SHExtension.h
-//  SHExtension
+//  UIView+ChatExtension.h
+//  ChatExtension
 //
 //  Created by GXL on 2018/9/19.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 IBInspectable
 
-@interface UIView (SHExtension)
+@interface UIView (ChatExtension)
 
 #pragma mark - frame
 //X轴

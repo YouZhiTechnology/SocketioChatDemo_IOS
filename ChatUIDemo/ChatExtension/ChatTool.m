@@ -1,6 +1,6 @@
 //
-//  SHTool.m
-//  SHExtensionExample
+//  ChatTool.m
+//  ChatExtensionExample
 //
 //  Created by GXL on 2019/8/6.
 //  Copyright © 2019 GXL. All rights reserved.

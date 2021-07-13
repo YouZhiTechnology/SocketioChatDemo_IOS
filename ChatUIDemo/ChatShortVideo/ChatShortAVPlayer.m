@@ -1,6 +1,6 @@
 //
-//  SHShortAVPlayer.m
-//  SHShortVideoExmaple
+//  ChatShortAVPlayer.m
+//  ChatShortVideoExmaple
 //
 //  Created by GXL on 2018/8/29.
 //  Copyright © 2018年 GXL. All rights reserved.

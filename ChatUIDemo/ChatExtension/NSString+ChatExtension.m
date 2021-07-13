@@ -1,6 +1,6 @@
 //
-//  NSString+SHExtension.m
-//  SHExtension
+//  NSString+ChatExtension.m
+//  ChatExtension
 //
 //  Created by GXL on 2018/9/19.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -10,7 +10,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCryptor.h>
 
-@implementation NSString (SHExtension)
+@implementation NSString (ChatExtension)
 
 #pragma mark SET
 - (void)setPinyin:(NSString *)pinyin{

@@ -1,6 +1,6 @@
 //
 //  ChatMessageTableViewCell.h
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2018/6/7.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -14,7 +14,7 @@
 @class ChatMessageFrame;
 @class ChatMessageTableViewCell;
 
-@protocol SHChatMessageCellDelegate <NSObject>
+@protocol ChatMessageCellDelegate <NSObject>
 
 @optional
 //点击
@@ -28,7 +28,7 @@
 @property (nonatomic, assign) CGPoint tapPoint;
 
 //代理
-@property (nonatomic, weak) id <SHChatMessageCellDelegate>delegate;
+@property (nonatomic, weak) id <ChatMessageCellDelegate>delegate;
 //坐标
 @property (nonatomic, retain) ChatMessageFrame *messageFrame;
 //内容

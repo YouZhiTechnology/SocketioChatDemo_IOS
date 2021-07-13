@@ -11,6 +11,6 @@
 
 @interface ChatActivityIndicatorView : UIButton
 
-@property (nonatomic, assign) SHSendMessageStatus messageState;
+@property (nonatomic, assign) ChatSendMessageStatus messageState;
 
 @end

@@ -50,7 +50,7 @@
 }
 
 #pragma mark - 显示操作
-- (void)setMessageState:(SHSendMessageStatus)messageState{
+- (void)setMessageState:(ChatSendMessageStatus)messageState{
     
     _messageState = messageState;
     
@@ -59,20 +59,20 @@
     [self.activity stopAnimating];
     
     switch (messageState) {
-        case SHSendMessageType_Sending://发送中
+        case ChatSendMessageType_Sending://发送中
         {
             self.hidden = NO;
             self.activity.hidden = NO;
             [self.activity startAnimating];
         }
             break;
-        case SHSendMessageType_Failed://失败
+        case ChatSendMessageType_Failed://失败
         {
             self.hidden = NO;
             self.failBtn.hidden = NO;
         }
             break;
-        case SHSendMessageType_Successed://成功
+        case ChatSendMessageType_Successed://成功
         {
             self.hidden = YES;
         }

@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, SHEmoticonType) {
-    SHEmoticonType_custom = 101,  //自定义表情
-    SHEmoticonType_system,        //系统表情
-    SHEmoticonType_gif,           //GIF表情
-    SHEmoticonType_collect,       //收藏表情
-    SHEmoticonType_recent,        //最近表情
+typedef NS_ENUM(NSUInteger, ChatEmoticonType) {
+    ChatEmoticonType_custom = 101,  //自定义表情
+    ChatEmoticonType_system,        //系统表情
+    ChatEmoticonType_gif,           //GIF表情
+    ChatEmoticonType_collect,       //收藏表情
+    ChatEmoticonType_recent,        //最近表情
 };
 
 /**
@@ -49,7 +49,7 @@ typedef NS_ENUM(NSUInteger, SHEmoticonType) {
 /**
  表情类型
  */
-@property (nonatomic, assign) SHEmoticonType type;
+@property (nonatomic, assign) ChatEmoticonType type;
 
 //转换
 + (instancetype)emotionWithDict:(NSDictionary *)dict;

@@ -1,6 +1,6 @@
 //
 //  ChatShareMenuItem.h
-//  SHChatMessageUI
+//  ChatUIDemo
 //
 //  Created by GXL on 16/7/27.
 //  Copyright © 2016年 GXL. All rights reserved.

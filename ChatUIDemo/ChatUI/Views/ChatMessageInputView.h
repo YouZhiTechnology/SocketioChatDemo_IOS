@@ -1,6 +1,6 @@
 //
 //  ChatMessageInputView.h
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2018/6/5.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -64,9 +64,12 @@
 //代理
 @property (nonatomic, weak) id<ChatMessageInputViewDelegate> delegate;
 //当前输入框类型
-@property (nonatomic, assign) SHInputViewType inputType;
+@property (nonatomic, assign) ChatInputViewType inputType;
 //多媒体数据
 @property (nonatomic, strong) NSArray *shareMenuItems;
+//其他输入控件
+//表情控件
+@property (nonatomic, strong) ChatEmotionKeyboard *emojiView;
 
 //刷新视图
 - (void)reloadView;

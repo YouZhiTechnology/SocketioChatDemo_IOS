@@ -1,6 +1,6 @@
 //
 //  ChatMessage.h
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2018/6/5.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -40,11 +40,11 @@
 //消息类型
 @property (nonatomic, assign) ChatMessageBodyType messageType;
 //聊天类型
-@property (nonatomic, assign) SHChatType chatType;
+@property (nonatomic, assign) ChatType chatType;
 //消息状态
-@property (nonatomic, assign) SHSendMessageStatus messageState;
+@property (nonatomic, assign) ChatSendMessageStatus messageState;
 //消息发送与接收
-@property (nonatomic, assign) SHBubbleMessageType bubbleMessageType;
+@property (nonatomic, assign) ChatBubbleMessageType bubbleMessageType;
 
 //所有资源文件(公共字段)
 @property (nonatomic, copy) NSString *fileName;
@@ -85,5 +85,9 @@
 //文件
 @property (nonatomic, copy) NSString *displayName;
 
+//是否显示时间
+@property (nonatomic, assign) BOOL showTime;
+//是否显示姓名
+@property (nonatomic, assign) BOOL showName;
 
 @end

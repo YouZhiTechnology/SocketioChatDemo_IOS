@@ -1,6 +1,6 @@
 //
 //  ChatFileTableViewCell.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2020/11/3.
 //  Copyright © 2020 GXL. All rights reserved.
@@ -45,7 +45,7 @@
     [self setBubbleImage:image];
     
     //设置frame
-    CGFloat margin = (message.bubbleMessageType == SHBubbleMessageType_Send) ? 0 : kChat_angle_w;
+    CGFloat margin = (message.bubbleMessageType == ChatBubbleMessageType_Send) ? 0 : kChat_angle_w;
     
     self.iconImg.x = self.btnContent.width - kChat_margin - self.iconImg.width;
     

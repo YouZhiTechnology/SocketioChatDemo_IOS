@@ -1,6 +1,6 @@
 //
 //  ChatRedPaperTableViewCell.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2021/5/20.
 //  Copyright © 2018 GXL. All rights reserved.
@@ -57,7 +57,7 @@
     UIImage *image = [self.btnContent.currentBackgroundImage imageWithColor:color];
     [self setBubbleImage:image];
 
-    CGFloat margin = (message.bubbleMessageType == SHBubbleMessageType_Send) ? 0 : kChat_angle_w;
+    CGFloat margin = (message.bubbleMessageType == ChatBubbleMessageType_Send) ? 0 : kChat_angle_w;
     //设置frame
     //图标
     self.redPaperImage.frame = CGRectMake(kChat_margin + margin, kChat_margin, 30, 40);

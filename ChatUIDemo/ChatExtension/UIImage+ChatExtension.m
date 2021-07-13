@@ -8,7 +8,6 @@
 
 #import "UIImage+ChatExtension.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "ChatMessageHeader.h"
 
 @implementation UIImage (ChatExtension)
 
@@ -561,7 +560,7 @@ int hist[32768];
 
 - (void)startToAnalyzeImage{
     
-    WS(weakSelf);
+    __weak typeof(self) weakSelf = self;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
@@ -603,10 +602,6 @@ int hist[32768];
                 distinctColorCount ++;
             }
         }
-        
-//        __weak typeof(self) weakSelf = self;
-        
-        
         
         NSInteger distinctColorIndex = 0;
         weakSelf.distinctColors = [[NSMutableArray alloc]init];

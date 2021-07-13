@@ -8,7 +8,7 @@
 
 #import "ChatTextView.h"
 
-@interface ChatTextView()<UITextViewDelegate>
+@interface ChatTextView()
 
 @end
 
@@ -31,7 +31,6 @@
     self.textContainerInset = UIEdgeInsetsZero;
     self.dataDetectorTypes = UIDataDetectorTypePhoneNumber | UIDataDetectorTypeLink;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.delegate = self;
 }
 //
 //#pragma mark 设置光标
@@ -47,7 +46,5 @@
     CGFloat padding = self.textContainer.lineFragmentPadding;
     [super setTextContainerInset:UIEdgeInsetsMake(textContainerInset.top, textContainerInset.left - padding, textContainerInset.bottom, textContainerInset.right - padding)];
 }
-
-
 
 @end

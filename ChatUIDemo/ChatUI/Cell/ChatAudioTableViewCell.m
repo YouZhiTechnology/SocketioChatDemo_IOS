@@ -1,6 +1,6 @@
 //
 //  ChatAudioTableViewCell.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2021/5/20.
 //  Copyright © 2018 GXL. All rights reserved.
@@ -45,14 +45,14 @@
     
     NSInteger set_space = 5;
     
-    if (message.bubbleMessageType == SHBubbleMessageType_Receiving)
+    if (message.bubbleMessageType == ChatBubbleMessageType_Receiving)
     {
         self.readMarker.hidden = message.messageRead;
         //未读标记
         self.readMarker.x = self.btnContent.width + set_space;
     }
     
-    self.voiceNum.hidden = (message.messageState != SHSendMessageType_Successed);
+    self.voiceNum.hidden = (message.messageState != ChatSendMessageType_Successed);
     self.voiceNum.text = [NSString stringWithFormat:@"%@\"", message.audioDuration];
     
     if (!message.fileName.length)
@@ -79,7 +79,7 @@
     self.voiceNum.x = self.btnContent.width + set_space;
     self.voiceNum.textAlignment = NSTextAlignmentLeft;
     
-    if (message.bubbleMessageType == SHBubbleMessageType_Send)
+    if (message.bubbleMessageType == ChatBubbleMessageType_Send)
     {
         //语音图片
         self.voiceView.x = self.btnContent.width - kChat_angle_w - kChat_margin - self.voiceView.width - 5;

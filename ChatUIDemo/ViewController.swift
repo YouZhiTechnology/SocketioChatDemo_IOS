@@ -46,6 +46,7 @@ class ViewController: UIViewController, MessageProcessingProtocol {
 
         let addItem = UIBarButtonItem(title: "添加", style: .plain, target: self, action: #selector(addClick))
         self.navigationItem.rightBarButtonItem = addItem
+
         
         IMManager.shared.chatList()
         
@@ -73,7 +74,7 @@ class ViewController: UIViewController, MessageProcessingProtocol {
                     let user:[String:Any] = data["user"] as! [String : Any]
                     
                     
-                    let vc = SwiftChatViewController()
+                    let vc = SocketChatViewController()
                                 
                     vc.sessionId = data["sessionId"] as! String
                     vc.toId = user["id"] as! String
@@ -120,7 +121,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = self.dataArray[indexPath.row]
-        let vc = SwiftChatViewController()
+        let vc = SocketChatViewController()
         vc.sessionId = model.sessionId ?? ""
         vc.toId = model.toUserId ?? ""
         self.navigationController?.pushViewController(vc, animated: true)

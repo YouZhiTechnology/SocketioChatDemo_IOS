@@ -1,6 +1,6 @@
 //
 //  ChatFileHelper.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2018/6/5.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -176,11 +176,7 @@
 #pragma mark 获取图片
 + (UIImage *)imageNamed:(NSString *)name
 {
-    if (![name containsString:@"png"])
-    {
-        name = [NSString stringWithFormat:@"%@.png", name];
-    }
-    return [UIImage imageNamed:[NSString stringWithFormat:@"SHChatUI.bundle/%@", name]];
+    return [UIImage imageNamed:name];
 }
 
 #pragma mark 获取文件大小

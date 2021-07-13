@@ -32,22 +32,22 @@ static NSMutableArray *_collectImages;
 }
 
 #pragma mark - 获取plist路径下的数据
-+ (NSArray *)loadResourceWithType:(SHEmoticonType)type{
++ (NSArray *)loadResourceWithType:(ChatEmoticonType)type{
     
     NSString *name;
     
     switch (type) {
-        case SHEmoticonType_custom://自定义
+        case ChatEmoticonType_custom://自定义
         {
             name = @"custom_emoji";
         }
             break;
-        case SHEmoticonType_gif://gif
+        case ChatEmoticonType_gif://gif
         {
             name = @"gif_emoji";
         }
             break;
-        case SHEmoticonType_system://系统
+        case ChatEmoticonType_system://系统
         {
             name = @"system_emoji";
         }
@@ -91,7 +91,7 @@ static NSMutableArray *_collectImages;
 #pragma mark 添加图片到收藏
 + (void)addCollectImageWithUrl:(NSString *)url{
     
-    NSString *path = [ChatEmotionTool getEmojiPathWithType:SHEmoticonType_collect];
+    NSString *path = [ChatEmotionTool getEmojiPathWithType:ChatEmoticonType_collect];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]){
         
@@ -124,7 +124,7 @@ static NSMutableArray *_collectImages;
         ChatEmotionModel *model = [[ChatEmotionModel alloc]init];
         model.code = [NSString stringWithFormat:@"[%@]",url.lastPathComponent];
         model.png = url.lastPathComponent;
-        model.type = SHEmoticonType_collect;
+        model.type = ChatEmoticonType_collect;
         model.url = url;
         [_collectImages insertObject:model atIndex:0];
         
@@ -144,20 +144,20 @@ static NSMutableArray *_collectImages;
 
 #pragma mark - 获取资源图片
 //获取表情图片路径
-+ (NSString *)getEmojiPathWithType:(SHEmoticonType)type{
++ (NSString *)getEmojiPathWithType:(ChatEmoticonType)type{
     
     switch (type) {
-        case SHEmoticonType_custom://自定义
+        case ChatEmoticonType_custom://自定义
         {
             return [NSString stringWithFormat:@"%@/custom_emoji/",[self getEmotionBundle]];
         }
             break;
-        case SHEmoticonType_gif://Gif
+        case ChatEmoticonType_gif://Gif
         {
             return [NSString stringWithFormat:@"%@/gif_emoji/",[self getEmotionBundle]];
         }
             break;
-        case SHEmoticonType_collect://收藏
+        case ChatEmoticonType_collect://收藏
         {
             return [NSString stringWithFormat:@"%@CollectImage/",DocumentPatch];
         }
@@ -191,13 +191,13 @@ static NSMutableArray *_collectImages;
 + (NSArray *)customEmotions{
     
     //读取默认表情
-    NSArray *array = [self loadResourceWithType:SHEmoticonType_custom];
+    NSArray *array = [self loadResourceWithType:ChatEmoticonType_custom];
     NSMutableArray *arrayM = [NSMutableArray array];
     
     for (NSDictionary *dict in array) {
         //模型转换
         ChatEmotionModel *model = [ChatEmotionModel emotionWithDict:dict];
-        model.type = SHEmoticonType_custom;
+        model.type = ChatEmoticonType_custom;
         [arrayM addObject:model];
     };
     
@@ -207,14 +207,14 @@ static NSMutableArray *_collectImages;
 #pragma mark 系统表情
 + (NSArray *)systemEmotions{
     //读取emoji表情
-    NSArray *array = [self loadResourceWithType:SHEmoticonType_system];
+    NSArray *array = [self loadResourceWithType:ChatEmoticonType_system];
     
     NSMutableArray *arrayM = [NSMutableArray array];
     
     for (NSDictionary *dict in array) {
         //模型转换
         ChatEmotionModel *model = [ChatEmotionModel emotionWithDict:dict];
-        model.type = SHEmoticonType_system;
+        model.type = ChatEmoticonType_system;
         [arrayM addObject:model];
     }
     
@@ -224,14 +224,14 @@ static NSMutableArray *_collectImages;
 #pragma mark gif表情
 + (NSArray *)gifEmotions{
     //读取大表情
-    NSArray *array = [self loadResourceWithType:SHEmoticonType_gif];
+    NSArray *array = [self loadResourceWithType:ChatEmoticonType_gif];
     
     NSMutableArray *arrayM = [NSMutableArray array];
     
     for (NSDictionary *dict in array) {
         //模型转换
         ChatEmotionModel *model = [ChatEmotionModel emotionWithDict:dict];
-        model.type = SHEmoticonType_gif;
+        model.type = ChatEmoticonType_gif;
         [arrayM addObject:model];
     }
     
@@ -246,7 +246,7 @@ static NSMutableArray *_collectImages;
     textAttachment.emotion = emotion;
     
     switch (emotion.type) {
-        case SHEmoticonType_custom:case SHEmoticonType_gif://Gif、自定义
+        case ChatEmoticonType_custom:case ChatEmoticonType_gif://Gif、自定义
         {
             textAttachment.emotion = emotion;
             //调整位置
@@ -256,7 +256,7 @@ static NSMutableArray *_collectImages;
             return [NSAttributedString attributedStringWithAttachment:textAttachment];
         }
             break;
-        case SHEmoticonType_system://系统
+        case ChatEmoticonType_system://系统
         {
             return [[NSAttributedString alloc]initWithString:emotion.code];
         }

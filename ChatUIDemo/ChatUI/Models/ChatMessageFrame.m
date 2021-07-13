@@ -1,6 +1,6 @@
 //
 //  ChatMessageFrame.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2018/6/5.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -20,7 +20,7 @@
         case ChatMessageBodyType_redPaper:
         case ChatMessageBodyType_note:
         {//红包、通知
-            message.messageState = SHSendMessageType_Successed;
+            message.messageState = ChatSendMessageType_Successed;
         }
             break;
         default:
@@ -28,7 +28,7 @@
     }
     
     // 判断收发
-    BOOL  isSend = (message.bubbleMessageType == SHBubbleMessageType_Send);
+    BOOL  isSend = (message.bubbleMessageType == ChatBubbleMessageType_Send);
     // 判断特殊消息
     BOOL isSpecial = (message.messageType == ChatMessageBodyType_note);
     // 角
@@ -60,7 +60,7 @@
         if (_showName){
             CGFloat nameX = kChat_margin + kChat_icon  + kChat_margin + kChat_angle_w;
             _nameF = CGRectMake(nameX, viewY , kWidth - 2*nameX, kChat_name_h);
-            viewY = CGRectGetMaxY(_nameF) + kChat_margin_name;
+            viewY = CGRectGetMaxY(_nameF) + kChat_margin;
         }
     }
     
@@ -160,7 +160,7 @@
     
     if (isAngle) {
         //没有角的
-        if (message.bubbleMessageType == SHBubbleMessageType_Send) {
+        if (message.bubbleMessageType == ChatBubbleMessageType_Send) {
             viewX -= kChat_angle_w;
         }else{
             viewX += kChat_angle_w;

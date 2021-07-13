@@ -1,6 +1,6 @@
 //
 //  ChatMessageVoiceHUD.m
-//  SHChatMessageUI
+//  ChatUIDemo
 //
 //  Created by GXL on 16/8/4.
 //  Copyright © 2016年 GXL. All rights reserved.
@@ -96,7 +96,7 @@
 }
 
 #pragma mark - 设置状态
-- (void)setHudType:(SHVoiceHudType)hudType
+- (void)setHudType:(ChatVoiceHudType)hudType
 {
     if (_hudType == hudType)
     {
@@ -113,7 +113,7 @@
 
     switch (hudType)
     {
-        case SHVoiceHudType_remove:
+        case ChatVoiceHudType_remove:
         {
             if (self.timer) {
                 [self.timer invalidate];
@@ -122,7 +122,7 @@
             [self removeFromSuperview];
         }
             break;
-        case SHVoiceHudType_recording:
+        case ChatVoiceHudType_recording:
         {
             if (self.timer) {
                 return;
@@ -130,7 +130,7 @@
             self.messageVoiceLabel.text = @"手指上滑，取消发送";
         }
             break;
-        case SHVoiceHudType_cancel:
+        case ChatVoiceHudType_cancel:
         {
 //            self.messageVoiceLabel.backgroundColor = kRGB(155, 57, 57, 1);
             
@@ -138,13 +138,13 @@
             self.messageVoiceImage.image = [ChatFileHelper imageNamed:@"voice_change"];
         }
             break;
-        case SHVoiceHudType_warning:
+        case ChatVoiceHudType_warning:
         {
             self.messageVoiceLabel.text = @"时间太短";
             self.messageVoiceImage.image = [ChatFileHelper imageNamed:@"voice_failure"];
         }
             break;
-        case SHVoiceHudType_countdown:
+        case ChatVoiceHudType_countdown:
         {
             if (self.timer) {
                 return;
@@ -153,7 +153,7 @@
             self.messageVoiceLabel.text = [NSString stringWithFormat:@"%ld“ 后将停止录音",(long)index];
             self.timer = [NSTimer timerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
                 index -= 1;
-                if (hudType == SHVoiceHudType_recording || hudType == SHVoiceHudType_countdown) {
+                if (hudType == ChatVoiceHudType_recording || hudType == ChatVoiceHudType_countdown) {
                     self.messageVoiceLabel.text = [NSString stringWithFormat:@"%ld“ 后将停止录音",(long)index];
                 }
             }];
@@ -168,7 +168,7 @@
 #pragma mark - 显示声音声波
 - (void)showVoiceMeters:(int)meter
 {
-    if (self.hudType == SHVoiceHudType_recording)
+    if (self.hudType == ChatVoiceHudType_recording)
     {
         NSString *imageName = [NSString stringWithFormat:@"voice_play_animation_%d", meter];
         self.messageVoiceImage.image = [ChatFileHelper imageNamed:imageName];

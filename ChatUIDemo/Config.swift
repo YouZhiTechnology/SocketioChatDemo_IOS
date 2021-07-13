@@ -12,17 +12,17 @@ public let kScreenWidth:Int = Int(UIScreen.main.bounds.width)
 public let kScreenHeight:Int = Int(UIScreen.main.bounds.height)
 
 //输入框高度
-public let kSHInPutHeight = 49
+public let kInPutHeight = 49
 
 //输入框控件间隔
-public let kSHInPutSpace = 7
+public let kChatInPutSpace = 7
 
 //输入框最多几行
-public let kSHInPutNum = 5
+public let kChatInPutNum = 5
 
 //菜单一行几个
-public let kSHShareMenuPerRowItemCount = 4
+public let kChatShareMenuPerRowItemCount = 4
 
-public let kSHTopSafe = UIApplication.shared.statusBarFrame.size.height
+public let kChatTopSafe = UIApplication.shared.statusBarFrame.size.height
 
-public let kSHBottomSafe = kSHTopSafe > 20 ? 39 : 0
+public let kBottomSafe = kChatTopSafe > 20 ? 39 : 0

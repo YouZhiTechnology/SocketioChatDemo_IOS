@@ -1,6 +1,6 @@
 //
-//  UIColor+SHExtension.h
-//  SHExtension
+//  UIColor+ChatExtension.h
+//  ChatExtension
 //
 //  Created by GXL on 2018/9/20.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 #pragma mark 颜色
-#define kSHRGB(R,G,B,A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A];
+#define kChatRGB(R,G,B,A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A];
 #pragma mark 随机颜色
-#define kSHRandomColor [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1]
+#define kChatRandomColor [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1]
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIColor (SHExtension)
+@interface UIColor (ChatExtension)
 
 #pragma mark 16进制颜色
 + (UIColor *)colorWithHexString:(NSString *)hexString;

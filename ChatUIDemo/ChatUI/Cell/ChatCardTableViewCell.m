@@ -1,6 +1,6 @@
 //
 //  ChatCardTableViewCell.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2021/5/20.
 //  Copyright © 2018 GXL. All rights reserved.
@@ -43,12 +43,12 @@
     self.cardName.text = message.card;
     self.cardHead.image = [UIImage imageNamed:@"headImage"];
     
-    if (message.bubbleMessageType == SHBubbleMessageType_Send) {
+    if (message.bubbleMessageType == ChatBubbleMessageType_Send) {
         UIImage *image = [self.btnContent.currentBackgroundImage imageWithColor:[UIColor whiteColor]];
         [self setBubbleImage:image];
     }
 
-    CGFloat margin = (message.bubbleMessageType == SHBubbleMessageType_Send) ? 0 : kChat_angle_w;
+    CGFloat margin = (message.bubbleMessageType == ChatBubbleMessageType_Send) ? 0 : kChat_angle_w;
     //设置frame
     //头像
     self.cardHead.x = kChat_margin + margin;

@@ -1,6 +1,6 @@
 //
 //  ChatMessageType.h
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2018/6/5.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -45,12 +45,12 @@ typedef enum {
  *  输入框类型
  */
 typedef enum {
-    SHInputViewType_default,     //默认
-    SHInputViewType_text,        //文本
-    SHInputViewType_voice,       //语音
-    SHInputViewType_emotion,     //表情
-    SHInputViewType_menu,        //菜单
-}SHInputViewType;
+    ChatInputViewType_default,     //默认
+    ChatInputViewType_text,        //文本
+    ChatInputViewType_voice,       //语音
+    ChatInputViewType_emotion,     //表情
+    ChatInputViewType_menu,        //菜单
+}ChatInputViewType;
 
 /**
  *  地图类型
@@ -75,26 +75,26 @@ typedef enum {
  *  发送方
  */
 typedef enum{
-    SHBubbleMessageType_Send = 0, // 发送
-    SHBubbleMessageType_Receiving, // 接收
-}SHBubbleMessageType;
+    ChatBubbleMessageType_Send = 0, // 发送
+    ChatBubbleMessageType_Receiving, // 接收
+}ChatBubbleMessageType;
 
 /**
  *  聊天类型
  */
 typedef enum{
-    SHChatType_Chat = 1,  //单聊
-    SHChatType_GroupChat  //群聊
-}SHChatType;
+    ChatType_Chat = 1,  //单聊
+    ChatType_GroupChat  //群聊
+}ChatType;
 
 /**
  *  消息发送状态
  */
 typedef enum{
-    SHSendMessageType_Successed = 1,  //发送成功
-    SHSendMessageType_Failed,         //发送失败
-    SHSendMessageType_Sending         //发送中
-}SHSendMessageStatus;
+    ChatSendMessageType_Successed = 1,  //发送成功
+    ChatSendMessageType_Failed,         //发送失败
+    ChatSendMessageType_Sending         //发送中
+}ChatSendMessageStatus;
 
 
 @interface ChatMessageType : NSObject

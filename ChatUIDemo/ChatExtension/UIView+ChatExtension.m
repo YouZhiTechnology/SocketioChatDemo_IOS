@@ -8,7 +8,7 @@
 
 #import "UIView+ChatExtension.h"
 
-@implementation UIView (SHExtension)
+@implementation UIView (ChatExtension)
 
 #pragma mark - frame
 - (void)setX:(CGFloat)x {

@@ -1,5 +1,5 @@
 //
-//  SHEmotionAttachment.m
+//  ChatEmotionAttachment.m
 //  ChatEmotionKeyboardExmaple
 //
 //  Created by GXL on 2018/8/16.
@@ -15,7 +15,7 @@
     _emotion = emotion;
     
     switch (emotion.type) {
-        case SHEmoticonType_custom://自定义
+        case ChatEmoticonType_custom://自定义
         {
             self.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@%@",[ChatEmotionTool getEmojiPathWithType:emotion.type],emotion.png]];
         }

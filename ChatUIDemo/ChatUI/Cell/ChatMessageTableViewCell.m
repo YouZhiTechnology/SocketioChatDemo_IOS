@@ -1,6 +1,6 @@
 //
 //  ChatMessageTableViewCell.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2018/6/7.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -101,7 +101,7 @@
     //发送状态
     self.activityView.hidden = YES;
     
-    BOOL isSend = (message.bubbleMessageType == SHBubbleMessageType_Send);
+    BOOL isSend = (message.bubbleMessageType == ChatBubbleMessageType_Send);
     
     // 设置时间
     self.labelTime.frame = messageFrame.timeF;
@@ -136,7 +136,7 @@
     self.activityView.messageState = message.messageState;
     
     // 发送状态
-    if (isSend && message.messageState != SHSendMessageType_Successed) {
+    if (isSend && message.messageState != ChatSendMessageType_Successed) {
         self.activityView.frame = CGRectMake(self.btnContent.x - (5 + 20), self.btnContent.y + (self.btnContent.height - 20)/2, 20, 20);
     }
     
@@ -197,7 +197,7 @@
 #pragma mark 点击重发
 - (void)repeatClick{
     
-    if (self.messageFrame.message.messageState == SHSendMessageType_Failed) {
+    if (self.messageFrame.message.messageState == ChatSendMessageType_Failed) {
         if ([self.delegate respondsToSelector:@selector(didSelectWithCell:type:message:)])  {
             [self.delegate didSelectWithCell:self type:ChatMessageClickType_click_retry message:self.messageFrame.message];
         }

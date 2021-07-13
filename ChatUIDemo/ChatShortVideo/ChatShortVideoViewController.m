@@ -1,6 +1,6 @@
 //
 //  ChatShortVideoViewController.m
-//  SHShortVideoExmaple
+//  ChatShortVideoExmaple
 //
 //  Created by GXL on 2018/8/29.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -15,15 +15,15 @@
 //弱引用
 #define WeakSelf typeof(self) __weak weakSelf = self;
 
-#define kSHDevice_Width  [[UIScreen mainScreen] bounds].size.width  //主屏幕的宽度
-#define kSHDevice_Height [[UIScreen mainScreen] bounds].size.height //主屏幕的高度
+#define kChatDevice_Width  [[UIScreen mainScreen] bounds].size.width  //主屏幕的宽度
+#define kChatDevice_Height [[UIScreen mainScreen] bounds].size.height //主屏幕的高度
 
 //是否是 全面屏
-#define  kSH_Full (kSH_StatusBarHeight != 20)
+#define  kChat_Full (kChat_StatusBarHeight != 20)
 //底部高度
-#define  kSH_SafeBottom (kSH_Full ? 34.f : 0.f)
+#define  kChat_SafeBottom (kChat_Full ? 34.f : 0.f)
 //状态栏高度
-#define  kSH_StatusBarHeight  ([UIApplication sharedApplication].statusBarFrame.size.height)
+#define  kChat_StatusBarHeight  ([UIApplication sharedApplication].statusBarFrame.size.height)
 
 typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
@@ -285,12 +285,12 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 #pragma mark 配置UI
 - (void)configUI{
    
-   self.centerY = self.view.height - 100 - kSH_SafeBottom;
+   self.centerY = self.view.height - 100 - kChat_SafeBottom;
    //背景
    self.bgView.frame = self.view.bounds;
    
    //摄像头切换
-   self.cameraBtn.frame = CGRectMake(self.view.width - 15 - 40,kSH_StatusBarHeight + 23, 40, 40);
+   self.cameraBtn.frame = CGRectMake(self.view.width - 15 - 40,kChat_StatusBarHeight + 23, 40, 40);
    
    //录制
    self.takeImage.size = CGSizeMake(70, 70);
@@ -306,7 +306,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
    
    //返回
    self.backBtn.size = CGSizeMake(70, 70);
-   self.backBtn.center = CGPointMake(kSHDevice_Width/4, self.centerY);
+   self.backBtn.center = CGPointMake(kChatDevice_Width/4, self.centerY);
    
    //提示
    self.tipLab.frame = CGRectMake(0, self.takeImage.y - 20 - 30, self.view.width, 20);
@@ -440,7 +440,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
    self.doneBtn.centerX = self.takeImage.centerX;
    self.cancelBtn.centerX = self.takeImage.centerX;
    
-   CGFloat centerX = kSHDevice_Width/4;
+   CGFloat centerX = kChatDevice_Width/4;
    [UIView animateWithDuration:0.25 animations:^{
       //完成左边
       self.doneBtn.centerX = self.takeImage.centerX - centerX;
@@ -893,12 +893,9 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
    [captureDevice unlockForConfiguration];
 }
 
-#pragma mark 获取Bundle路径
+#pragma mark 获取image
 - (UIImage *)getImageWithName:(NSString *)name{
-   
-   NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"SHShortVideo" ofType:@"bundle"];
-   NSString *imagePath = [NSString stringWithFormat:@"%@/%@@2x",path,name];
-   return [UIImage imageWithContentsOfFile:imagePath];
+    return [UIImage imageNamed:name];
 }
 
 #pragma mark 获取视频size

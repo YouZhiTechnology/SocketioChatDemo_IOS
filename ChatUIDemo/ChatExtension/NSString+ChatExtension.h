@@ -1,6 +1,6 @@
 //
-//  NSString+SHExtension.h
-//  SHExtension
+//  NSString+ChatExtension.h
+//  ChatExtension
 //
 //  Created by GXL on 2018/9/19.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSString (SHExtension)
+@interface NSString (ChatExtension)
 
 //获取拼音
 @property (nonatomic, copy) NSString *pinyin;

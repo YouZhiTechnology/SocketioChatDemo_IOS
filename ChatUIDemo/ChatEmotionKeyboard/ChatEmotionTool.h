@@ -33,7 +33,7 @@
 
 #pragma mark - 获取资源图片
 //获取表情图片路径
-+ (NSString *)getEmojiPathWithType:(SHEmoticonType)type;
++ (NSString *)getEmojiPathWithType:(ChatEmoticonType)type;
 //获取其他资源图片
 + (UIImage *)emotionImageWithName:(NSString *)name;
 

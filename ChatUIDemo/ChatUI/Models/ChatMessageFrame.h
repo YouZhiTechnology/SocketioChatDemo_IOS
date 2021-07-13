@@ -1,6 +1,6 @@
 //
 //  ChatMessageFrame.h
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2018/6/5.
 //  Copyright © 2018年 GXL. All rights reserved.
@@ -15,9 +15,6 @@
 
 //消息中控件与内容间隔
 static NSInteger const kChat_margin = 10;
-
-//消息用户名与内容间隔
-static NSInteger const kChat_margin_name = 5;
 
 //time
 //时间间隙

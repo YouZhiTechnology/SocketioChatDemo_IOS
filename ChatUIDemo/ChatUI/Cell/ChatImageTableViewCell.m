@@ -1,6 +1,6 @@
 //
 //  ChatImageTableViewCell.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2021/5/20.
 //  Copyright © 2018 GXL. All rights reserved.
@@ -34,7 +34,7 @@
 
     NSString *filePath = [ChatFileHelper getFilePathWithName:message.fileName type:ChatMessageFileType_image];
     UIImage *image = [UIImage imageWithContentsOfFile:filePath];
-    
+  
     if (image) {//本地
         [self.btnContent setImage:image forState:0];
     }else{//网络

@@ -1,6 +1,6 @@
 //
 //  ChatGifTableViewCell.m
-//  SHChatUI
+//  ChatUIDemo
 //
 //  Created by GXL on 2021/5/20.
 //  Copyright © 2018 GXL. All rights reserved.
@@ -35,7 +35,7 @@
     
     //设置内容
     //获取Gif路径 (自带Gif)
-    NSString *gifPath = [[ChatEmotionTool getEmojiPathWithType:SHEmoticonType_gif] stringByAppendingString:message.gifName];
+    NSString *gifPath = [[ChatEmotionTool getEmojiPathWithType:ChatEmoticonType_gif] stringByAppendingString:message.gifName];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:gifPath]) {
         

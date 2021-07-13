@@ -10,9 +10,9 @@
 #import "UIView+ChatExtension.h"
 #import "ChatEmotionTool.h"
 
-#define kSHEmotionRGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define kChatEmotionRGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 //删除表情标示
-#define kSHEmotion_delete_code @"emotion_delete"
+#define kChatEmotion_delete_code @"emotion_delete"
 
 #pragma mark - 表情按钮ChatEmotionButton
 @class ChatEmotionModel;
@@ -78,7 +78,7 @@
     self.titleLabel.font = [UIFont systemFontOfSize:35];
     
     //删除按钮
-    if ([emotion.code isEqualToString:kSHEmotion_delete_code]) {
+    if ([emotion.code isEqualToString:kChatEmotion_delete_code]) {
         UIImage *image = [ChatEmotionTool emotionImageWithName:@"sh_emotion_delete"];
         [self setImage:image forState:UIControlStateNormal];
         return;
@@ -86,7 +86,7 @@
     
     //设置按钮内容
     switch (emotion.type) {
-        case SHEmoticonType_custom://自定义
+        case ChatEmoticonType_custom://自定义
         {
             emotion.path = [[ChatEmotionTool getEmojiPathWithType:emotion.type] stringByAppendingString:emotion.png];
             //设置表情图片
@@ -94,7 +94,7 @@
             [self setImage:image forState:UIControlStateNormal];
         }
             break;
-        case SHEmoticonType_gif://GIF
+        case ChatEmoticonType_gif://GIF
         {
             NSString *path = [ChatEmotionTool getEmojiPathWithType:emotion.type];
             emotion.path = [path stringByAppendingString:emotion.gif];
@@ -103,13 +103,13 @@
             [self setImage:image forState:UIControlStateNormal];
         }
             break;
-        case SHEmoticonType_system://系统
+        case ChatEmoticonType_system://系统
         {
             //设置表情图片
             [self setTitle:emotion.code forState:UIControlStateNormal];
         }
             break;
-        case SHEmoticonType_collect://收藏
+        case ChatEmoticonType_collect://收藏
         {
             NSString *path = [ChatEmotionTool getEmojiPathWithType:emotion.type];
             emotion.path = [path stringByAppendingString:emotion.png];
@@ -132,12 +132,12 @@
 
 @end
 
-#pragma mark - 表情列表数据SHEmotionPageView
+#pragma mark - 表情列表数据ChatEmotionPageView
 
 /**
  表情列表数据
  */
-@interface SHEmotionPageView : UIView
+@interface ChatEmotionPageView : UIView
 /**
  *  当前一页对应的表情集合
  */
@@ -145,7 +145,7 @@
 
 @end
 
-@interface SHEmotionPageView()
+@interface ChatEmotionPageView()
 
 //表情按钮对应的集合,记录表情按钮,以便在调整位置的时候用到
 @property (nonatomic, strong) NSMutableArray *emotionButtons;
@@ -154,7 +154,7 @@
 
 @end
 
-@implementation SHEmotionPageView
+@implementation ChatEmotionPageView
 
 
 - (NSMutableArray *)emotionButtons{
@@ -169,8 +169,8 @@
     _emotions = emotions;
     
     switch (self.tag) {//设置当前界面排序
-        case SHEmoticonType_gif:
-        case SHEmoticonType_collect:
+        case ChatEmoticonType_gif:
+        case ChatEmoticonType_collect:
         {
             //特殊处理
             //GIF、收藏 4*2
@@ -200,11 +200,11 @@
     //添加删除按钮
     if (emotions.count) {
         //添加删除按钮(系统、自定义、最近)
-        if (self.tag == SHEmoticonType_custom || self.tag == SHEmoticonType_system || self.tag == SHEmoticonType_recent) {
+        if (self.tag == ChatEmoticonType_custom || self.tag == ChatEmoticonType_system || self.tag == ChatEmoticonType_recent) {
             
             //删除
             ChatEmotionModel *deleteModel = [[ChatEmotionModel alloc]init];
-            deleteModel.code = kSHEmotion_delete_code;
+            deleteModel.code = kChatEmotion_delete_code;
             
             //添加删除按钮
             ChatEmotionButton *delete = [[ChatEmotionButton alloc] init];
@@ -251,7 +251,7 @@
         NSInteger col = i % self.indexPath.row;
         NSInteger row = i / self.indexPath.row;
         
-        if ([view.emotion.code isEqualToString:kSHEmotion_delete_code]) {
+        if ([view.emotion.code isEqualToString:kChatEmotion_delete_code]) {
             //设置位置
             view.x = (self.indexPath.row - 1) * view_w;
             view.y = (self.indexPath.section - 1) * view_h;
@@ -265,22 +265,22 @@
 
 @end
 
-#pragma mark - 上方表情列表SHEmotionListView
+#pragma mark - 上方表情列表ChatEmotionListView
 
 /**
  表情列表
  */
-@interface SHEmotionListView : UIView
+@interface ChatEmotionListView : UIView
 /**
  *  当前ListView对应的表情集合
  */
 @property (nonatomic, strong) NSArray *emotions;
 
-@property (nonatomic, assign) SHEmoticonType currentType;
+@property (nonatomic, assign) ChatEmoticonType currentType;
 
 @end
 
-@interface SHEmotionListView()<UIScrollViewDelegate>
+@interface ChatEmotionListView()<UIScrollViewDelegate>
 
 //page
 @property (nonatomic, weak) UIPageControl *pageControl;
@@ -294,7 +294,7 @@
 
 @end
 
-@implementation SHEmotionListView
+@implementation ChatEmotionListView
 
 #pragma mark 懒加载
 - (NSMutableArray *)scrollsubViews{
@@ -328,8 +328,8 @@
         //添加uipageControl
         UIPageControl *control = [[UIPageControl alloc] init];
         control.userInteractionEnabled = NO;
-        [control setCurrentPageIndicatorTintColor:kSHEmotionRGB(134, 134, 134)];
-        [control setPageIndicatorTintColor:kSHEmotionRGB(180, 180, 180)];
+        [control setCurrentPageIndicatorTintColor:kChatEmotionRGB(134, 134, 134)];
+        [control setPageIndicatorTintColor:kChatEmotionRGB(180, 180, 180)];
         
         [self addSubview:control];
         _pageControl = control;
@@ -399,8 +399,8 @@
     NSInteger pageMaxCount = 1;
     
     switch (self.currentType) {
-        case SHEmoticonType_gif:
-        case SHEmoticonType_collect:
+        case ChatEmoticonType_gif:
+        case ChatEmoticonType_collect:
         {
             //特殊处理
             //Gif、收藏 2*4
@@ -423,7 +423,7 @@
     
     for (int i = 0; i < pageNum; i++) {
         
-        SHEmotionPageView *view = [[SHEmotionPageView alloc] init];
+        ChatEmotionPageView *view = [[ChatEmotionPageView alloc] init];
 
         view.tag = self.currentType;
         //切割每一页的表情集合
@@ -467,7 +467,7 @@
  */
 @protocol ChatEmotionToolBarDelegate <NSObject>
 
-- (void)emotionToolbar:(ChatEmotionToolBar *)toolBar buttonClickWithType:(SHEmoticonType)type;
+- (void)emotionToolbar:(ChatEmotionToolBar *)toolBar buttonClickWithType:(ChatEmoticonType)type;
 
 @end
 
@@ -480,7 +480,7 @@
 - (void)setup;
 
 //点击工具栏
-- (void)clickToolWithType:(SHEmoticonType)type;
+- (void)clickToolWithType:(ChatEmoticonType)type;
 
 @end
 
@@ -534,29 +534,29 @@
     [self.toolArr enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         switch ([obj intValue]) {
-            case SHEmoticonType_collect://收藏
+            case ChatEmoticonType_collect://收藏
             {
-                self.collectBtn = [self addChildBtnWithTitle:@"收藏" type:SHEmoticonType_collect index:idx];
+                self.collectBtn = [self addChildBtnWithTitle:@"收藏" type:ChatEmoticonType_collect index:idx];
             }
                 break;
-            case SHEmoticonType_custom://自定义
+            case ChatEmoticonType_custom://自定义
             {
-                self.customBtn = [self addChildBtnWithTitle:@"默认" type:SHEmoticonType_custom index:idx];
+                self.customBtn = [self addChildBtnWithTitle:@"默认" type:ChatEmoticonType_custom index:idx];
             }
                 break;
-            case SHEmoticonType_system://系统
+            case ChatEmoticonType_system://系统
             {
-                self.systemBtn = [self addChildBtnWithTitle:@"系统" type:SHEmoticonType_system index:idx];
+                self.systemBtn = [self addChildBtnWithTitle:@"系统" type:ChatEmoticonType_system index:idx];
             }
                 break;
-            case SHEmoticonType_gif://GIF
+            case ChatEmoticonType_gif://GIF
             {
-                self.gifBtn = [self addChildBtnWithTitle:@"GIF" type:SHEmoticonType_gif index:idx];
+                self.gifBtn = [self addChildBtnWithTitle:@"GIF" type:ChatEmoticonType_gif index:idx];
             }
                 break;
-            case SHEmoticonType_recent://最近
+            case ChatEmoticonType_recent://最近
             {
-                self.recentBtn = [self addChildBtnWithTitle:@"最近" type:SHEmoticonType_recent index:idx];
+                self.recentBtn = [self addChildBtnWithTitle:@"最近" type:ChatEmoticonType_recent index:idx];
             }
                 break;
         }
@@ -577,7 +577,7 @@
     }
 }
 
-- (UIButton *)addChildBtnWithTitle:(NSString *)title type:(SHEmoticonType)type index:(NSInteger)index{
+- (UIButton *)addChildBtnWithTitle:(NSString *)title type:(ChatEmoticonType)type index:(NSInteger)index{
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -605,7 +605,7 @@
 }
 
 #pragma mark 点击工具栏
-- (void)clickToolWithType:(SHEmoticonType)type{
+- (void)clickToolWithType:(ChatEmoticonType)type{
     
     UIButton *btn = (UIButton *)[self viewWithTag:type];
     if (btn) {
@@ -620,7 +620,7 @@
     //先移除之前 选中的button
     self.currentBtn.backgroundColor = [UIColor whiteColor];
     //选中当前
-    button.backgroundColor = kSHEmotionRGB(243, 243, 247);
+    button.backgroundColor = kChatEmotionRGB(243, 243, 247);
     //记录当前选中的按钮
     self.currentBtn = button;
     
@@ -644,22 +644,22 @@
 @property (nonatomic, strong) ChatEmotionToolBar *toolBar;
 
 //当前
-@property (nonatomic, strong) SHEmotionListView *currentListView;
+@property (nonatomic, strong) ChatEmotionListView *currentListView;
 
 //收藏
-@property (nonatomic, strong) SHEmotionListView *collectListView;
+@property (nonatomic, strong) ChatEmotionListView *collectListView;
 
 //自定义
-@property (nonatomic, strong) SHEmotionListView *customListView;
+@property (nonatomic, strong) ChatEmotionListView *customListView;
 
 //系统
-@property (nonatomic, strong) SHEmotionListView *systemListView;
+@property (nonatomic, strong) ChatEmotionListView *systemListView;
 
 //GIF
-@property (nonatomic, strong) SHEmotionListView *gifListView;
+@property (nonatomic, strong) ChatEmotionListView *gifListView;
 
 //最近
-@property (nonatomic, strong) SHEmotionListView *recentListView;
+@property (nonatomic, strong) ChatEmotionListView *recentListView;
 
 @end
 
@@ -670,7 +670,7 @@
     
     self.frame = CGRectMake(0, 0, kScreenW, kKeyboardH + SafeBottomH);
     //设置颜色
-    self.backgroundColor = kSHEmotionRGB(243, 243, 243);
+    self.backgroundColor = kChatEmotionRGB(243, 243, 243);
     
     //表情点击通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidSelected:) name:@"EmotionDidSelectedNoti" object:nil];
@@ -706,50 +706,50 @@
 }
 
 #pragma mark 收藏表情视图
-- (SHEmotionListView *)collectListView{
+- (ChatEmotionListView *)collectListView{
     if (!_collectListView) {
-        _collectListView = [[SHEmotionListView alloc] init];
-        _collectListView.currentType = SHEmoticonType_collect;
+        _collectListView = [[ChatEmotionListView alloc] init];
+        _collectListView.currentType = ChatEmoticonType_collect;
     }
     _collectListView.emotions = [ChatEmotionTool collectEmotions];
     return _collectListView;
 }
 
 #pragma mark 自定义表情视图
-- (SHEmotionListView *)customListView{
+- (ChatEmotionListView *)customListView{
     if (!_customListView) {
-        _customListView = [[SHEmotionListView alloc] init];
-        _customListView.currentType = SHEmoticonType_custom;
+        _customListView = [[ChatEmotionListView alloc] init];
+        _customListView.currentType = ChatEmoticonType_custom;
         _customListView.emotions = [ChatEmotionTool customEmotions];
     }
     return _customListView;
 }
 
 #pragma mark 系统表情视图
-- (SHEmotionListView *)systemListView{
+- (ChatEmotionListView *)systemListView{
     if (!_systemListView) {
-        _systemListView = [[SHEmotionListView alloc] init];
-        _systemListView.currentType = SHEmoticonType_system;
+        _systemListView = [[ChatEmotionListView alloc] init];
+        _systemListView.currentType = ChatEmoticonType_system;
         _systemListView.emotions = [ChatEmotionTool systemEmotions];
     }
     return _systemListView;
 }
 
 #pragma mark GIF表情视图
-- (SHEmotionListView *)gifListView{
+- (ChatEmotionListView *)gifListView{
     if (!_gifListView) {
-        _gifListView = [[SHEmotionListView alloc]init];
-        _gifListView.currentType = SHEmoticonType_gif;
+        _gifListView = [[ChatEmotionListView alloc]init];
+        _gifListView.currentType = ChatEmoticonType_gif;
         _gifListView.emotions = [ChatEmotionTool gifEmotions];
     }
     return _gifListView;
 }
 
 #pragma mark 最近表情视图
-- (SHEmotionListView *)recentListView{
+- (ChatEmotionListView *)recentListView{
     if (!_recentListView) {
-        _recentListView = [[SHEmotionListView alloc]init];
-        _recentListView.currentType = SHEmoticonType_recent;
+        _recentListView = [[ChatEmotionListView alloc]init];
+        _recentListView.currentType = ChatEmoticonType_recent;
     }
     _recentListView.emotions = [ChatEmotionTool recentEmotions];
     return _recentListView;
@@ -762,7 +762,7 @@
     ChatEmotionButton *button = noti.object;
     
     //点击了删除
-    if ([button.emotion.code isEqualToString:kSHEmotion_delete_code]) {//点击了删除
+    if ([button.emotion.code isEqualToString:kChatEmotion_delete_code]) {//点击了删除
         if (self.deleteEmotionBlock) {
             self.deleteEmotionBlock();
         }
@@ -770,9 +770,9 @@
     }
     
     //如果有最近功能需要进行添加(系统、自定义)
-    if (button.emotion.type == SHEmoticonType_system || button.emotion.type == SHEmoticonType_custom) {
+    if (button.emotion.type == ChatEmoticonType_system || button.emotion.type == ChatEmoticonType_custom) {
         for (NSString *obj in self.toolBarArr) {
-            if ([obj intValue] == SHEmoticonType_recent) {//如果有最近则进行添加
+            if ([obj intValue] == ChatEmoticonType_recent) {//如果有最近则进行添加
                 //添加到最近
                 [ChatEmotionTool addRecentEmotion:button.emotion];
                 break;
@@ -798,7 +798,7 @@
 - (void)updateCollectView{
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self emotionToolbar:self.toolBar buttonClickWithType:SHEmoticonType_collect];
+        [self emotionToolbar:self.toolBar buttonClickWithType:ChatEmoticonType_collect];
     });
 }
 
@@ -809,26 +809,26 @@
 }
 
 #pragma mark EmotionToolBar delegate 方法
-- (void)emotionToolbar:(ChatEmotionToolBar *)toolBar buttonClickWithType:(SHEmoticonType)type{
+- (void)emotionToolbar:(ChatEmotionToolBar *)toolBar buttonClickWithType:(ChatEmoticonType)type{
     
     //先移除原来显示的
     [self.currentListView removeFromSuperview];
     
     //更新一下视图
     switch (type) {
-        case SHEmoticonType_collect://收藏
+        case ChatEmoticonType_collect://收藏
             [self addSubview:self.collectListView];
             break;
-        case SHEmoticonType_custom://自定义
+        case ChatEmoticonType_custom://自定义
             [self addSubview:self.customListView];
             break;
-        case SHEmoticonType_system://系统
+        case ChatEmoticonType_system://系统
             [self addSubview:self.systemListView];
             break;
-        case SHEmoticonType_gif://GIF
+        case ChatEmoticonType_gif://GIF
             [self addSubview:self.gifListView];
             break;
-        case SHEmoticonType_recent://最近
+        case ChatEmoticonType_recent://最近
             [self addSubview:self.recentListView];
             break;
     }
@@ -841,17 +841,21 @@
     [self.currentListView.scrollView setContentOffset:CGPointMake(0, 0)];
 }
 
-- (void)setIndex:(SHEmoticonType)index{
+- (void)setIndex:(ChatEmoticonType)index{
     
     [self.toolBar clickToolWithType:index];
 }
 
-- (SHEmoticonType)index{
+- (ChatEmoticonType)index{
     return self.toolBar.currentBtn.tag;
 }
 
 #pragma mark 销毁
 - (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)clear {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
